@@ -25,6 +25,9 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):  # Тут мы создали новый метод
+        return reverse('company_detail', args=[str(self.id)])
+
 
 class Contact(models.Model):
     ROLES = [('LPR', 'ЛПР'),

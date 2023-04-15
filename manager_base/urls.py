@@ -19,7 +19,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from manager_base import views
+from manager_base.views import CompanyListView
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.home, name='home'),
+    path('create_company/', views.CompanyCreateView.as_view(), name='create-company'),
+
 ]

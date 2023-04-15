@@ -16,8 +16,6 @@
     <h1>{% block header %}{% endblock header %}</h1>
 </head>
 <body>
-{% block content%}
-
 <div class="container-fluid">
     <ul class="nav flex-column">
         <div class="row gy-2">
@@ -28,11 +26,10 @@
                             <input class="form-control me-2" type="search" placeholder="Поиск" aria-label="search">
                             <button class="btn btn-outline-primary" type="submit">Поиск</button>
                         </form>
-
                 </nav>
             </li>
             <li class="nav-item">
-                <a href="#" class="btn btn-outline-primary btn-lg">Добавить компанию</a>
+                <a href="{% url 'create-company' %}" class="btn btn-outline-primary btn-lg">Добавить компанию</a>
             </li>
             <li class="nav-item">
                 <a href="#" class="btn btn-outline-primary btn-lg">Дэшборд</a>
@@ -45,10 +42,18 @@
             </li>
         </div>
     </ul>
-
 </div>
+{% block content%}
+<h1>Компании</h1>
+{% for company in object_list %}
+<ul>
+    <li>{{ company.name }} </li>
+    <li>{{ company.location }} </li>
+    <li>{{ company.email }} </li>
+    <li>{{ company.phone }} </li>
+</ul>
+{% endfor %}
 
 {% endblock content %}
-
 </body>
 </html>
