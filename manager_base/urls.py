@@ -21,5 +21,5 @@ from django.urls import path, include
 from manager_base import views
 
 urlpatterns = [
-    path('', views.index, name='home')
+    path('', views.index),
 ]
