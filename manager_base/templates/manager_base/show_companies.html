@@ -1,0 +1,13 @@
+{% extends "manager_base/base.html" %}
+{% block content %}
+<h1>Компании</h1>
+{% for company in object_list %}
+<ul>
+    <li>ID: {{ company.id }}</li>
+    <li>Название компании: {{ company.name }}</li>
+    <li>Местоположение: {{ company.location }}</li>
+    <li>Email: {{ company.email }}</li>
+    <li>Телефон: {{ company.phone }}</li>
+</ul>
+{% endfor %}
+{% endblock %}

@@ -11,12 +11,12 @@ from manager_base.models import Company
 class CompanyCreateView(CreateView):
     model = Company
     template_name = 'manager_base/create_company.html'
-
     fields = ['name', 'location', 'email', 'phone']
+
 
 class CompanyListView(ListView):
     model = Company
-
+    template_name = 'manager_base/show_companies.html'
 
 
 def home(request):

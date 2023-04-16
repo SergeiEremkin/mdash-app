@@ -22,7 +22,7 @@ from manager_base import views
 from manager_base.views import CompanyListView
 
 urlpatterns = [
-    path('', views.home, name='home'),
+    path('', views.CompanyListView.as_view(), name='home'),
     path('create_company/', views.CompanyCreateView.as_view(), name='create-company'),
 
 ]
