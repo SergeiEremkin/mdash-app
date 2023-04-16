@@ -1,8 +1,13 @@
 {% extends "manager_base/base.html" %}
 
 {% block content %}
+
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Save">
+    <div>
+        {{ form.as_p }}
+    </div>
+    <br>
+    <input type="submit" value="Сохранить">
 </form>
+
 {% endblock %}

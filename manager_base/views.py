@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, ListView
 
+from manager_base.forms import CompanyForm
 from manager_base.models import Company
 
 
@@ -11,7 +12,9 @@ from manager_base.models import Company
 class CompanyCreateView(CreateView):
     model = Company
     template_name = 'manager_base/create_company.html'
-    fields = ['name', 'location', 'email', 'phone']
+    form_class = CompanyForm
+    #fields = ['name', 'location', 'email', 'phone']
+
 
 
 class CompanyListView(ListView):

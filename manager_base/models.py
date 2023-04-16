@@ -4,11 +4,6 @@ from django.urls import reverse
 
 
 # Create your models here.
-ROLES = [('user', 'Аутентифицированный пользователь'),
-         ('moderator', 'Модератор'),
-         ('admin', 'Администратор')]
-
-
 class Company(models.Model):
     name = models.CharField('Название компании', max_length=50, help_text="Введите название")
     location = models.CharField('Место нахождения', max_length=50, help_text="Введите местоположения")
