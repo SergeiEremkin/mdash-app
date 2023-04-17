@@ -13,7 +13,7 @@ class Company(models.Model):
     date_update = models.DateTimeField('Дата обновления', auto_now_add=True)  # не нужно добавлять в форму
 
     class Meta:
-        ordering = ["-name"]
+        ordering = ["name"]
         verbose_name = "Компания"
         verbose_name_plural = "Компании"
 
@@ -21,7 +21,7 @@ class Company(models.Model):
         return self.name
 
     def get_absolute_url(self):  # Тут мы создали новый метод
-        return reverse('company_detail', args=[str(self.id)])
+        return reverse('details-company', args=[str(self.id)])
 
 
 class Contact(models.Model):

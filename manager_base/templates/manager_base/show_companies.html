@@ -1,13 +1,32 @@
 {% extends "manager_base/base.html" %}
 {% block content %}
-<h1 >Компании</h1>
-{% for company in object_list %}
-<ul>
-    <li>ID: {{ company.id }}</li>
-    <li>Название компании: {{ company.name }}</li>
-    <li>Местоположение: {{ company.location }}</li>
-    <li>Email: {{ company.email }}</li>
-    <li>Телефон: {{ company.phone }}</li>
-</ul>
-{% endfor %}
+<h1>Компании</h1>
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>#</th>
+        <th>Название компании</th>
+        <th>Местоположение</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Дата создания</th>
+        <th>Дата обновления</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for company in companies %}
+    <tr>
+        <th scope="row">{{ company.id }}</th>
+        <td><a href="{% url 'details-company' company.id%}"<button type="button" class="btn btn-link">{{ company.name }}</button></a></td>
+        <td>{{ company.location }}</td>
+        <td>{{ company.email }}</td>
+        <td>{{ company.phone }}</td>
+        <td>{{ company.date_create }}</td>
+        <td>{{ company.date_update }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}

@@ -8,10 +8,10 @@ class CompanyForm(forms.ModelForm):
         model = Company
         fields = ['name', 'location', 'email', 'phone']
 
-    name = forms.CharField(label='Компания', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст'}))
-    location = forms.CharField(label='Местоположение', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст'}))
-    email = forms.EmailField(label='Эл.почта', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст'}))
-    phone = forms.IntegerField(label='Номер телефона', widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'x(xxx)xxxxxxx'}))
+    name = forms.CharField(label='Компания', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    location = forms.CharField(label='Местоположение', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    email = forms.EmailField(label='Эл.почта', widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    phone = forms.IntegerField(label='Номер телефона', widget=forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'x(xxx)xxxxxxx', 'style': 'width: 500px'}))
 
 
 class ContactForm(forms.ModelForm):

@@ -1,0 +1,25 @@
+{% extends "manager_base/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card w-50">
+                <div class="card-header">
+                    <h3>{{company.name}}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><p class="fw-bold">Эл.почта: </p>{{ company.email }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Телефон: </p>{{ company.phone }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Дата создания: </p>{{ company.date_create }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Дата изменения: </p>{{ company.date_update }}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            Комментарии
+        </div>
+    </div>
+</div>
+{% endblock %}
