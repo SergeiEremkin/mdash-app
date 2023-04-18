@@ -18,12 +18,20 @@
     {% for company in companies %}
     <tr>
         <th scope="row">{{ company.id }}</th>
-        <td><a href="{% url 'details-company' company.id%}"<button type="button" class="btn btn-link">{{ company.name }}</button></a></td>
+        <td><a href="{% url 'details-company' company.id%}"
+            <button type="button" class="btn btn-link">{{ company.name }}</button>
+            </a></td>
         <td>{{ company.location }}</td>
         <td>{{ company.email }}</td>
         <td>{{ company.phone }}</td>
         <td>{{ company.date_create }}</td>
         <td>{{ company.date_update }}</td>
+        <td><a href="{% url 'company-delete' company.id%}"
+            <button type="button" class="btn btn-link"><i class="bi bi-trash3"></i></button>
+            </a>
+            <a href="{% url 'company-update' company.id%}"
+            <button type="button" class="btn btn-link"><i class="bi bi-pencil-square"></i></button>
+            </a></td>
     </tr>
     {% endfor %}
     </tbody>

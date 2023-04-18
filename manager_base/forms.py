@@ -26,7 +26,6 @@ class ContactForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-
-        # Здесь перечислим поля модели, которые должны отображаться в веб-форме;
-        # при необходимости можно вывести в веб-форму только часть полей из модели.
         fields = ['text']
+
+    text = forms.CharField(label='Комментарий', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))

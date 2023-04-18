@@ -19,6 +19,11 @@
         </div>
         <div class="col">
             Комментарии
+            <a href="{% url 'create-comment' company.id %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Создать
+                комментарий</a>
+            {% for com in company.comment_set.all %}
+            {{ com.title }}
+            {% endfor %}
         </div>
     </div>
 </div>

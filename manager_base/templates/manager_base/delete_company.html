@@ -1,0 +1,11 @@
+{% extends "manager_base/base.html" %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Вы уверены, что хотите удалить "{{ object }}"?</p>
+    <div class="btn-group" role="group" aria-label="Delete buttons">
+    <button type="submit" class="btn btn-primary">Подтвердить</button>
+    <a href="{% url 'home' %}"<button type="button" class="btn btn-secondary">Нет, вернуться на главную</button></a>
+    </div>
+</form>
+{% endblock %}
