@@ -25,19 +25,19 @@ class Company(models.Model):
 
 
 class Contact(models.Model):
-    ROLES = [('LPR', 'ЛПР'),
-             ('LVR', 'ЛВР'),
-             ('MANAGER', 'Менеджер')]
+    ROLES = [('ЛПР', 'ЛПР'),
+             ('ЛВР', 'ЛВР'),
+             ('Менеджер', 'Менеджер')]
     name = models.CharField('ФИО', max_length=50, help_text="Введите название")
-    role = models.CharField('Должность', max_length=50,blank=True, choices=ROLES, default='MANAGER')
+    role = models.CharField('Должность',max_length=50, choices=ROLES, default='Менеджер')
     email = models.EmailField('Почта', max_length=50, help_text="Введите почту")
     phone = models.IntegerField('Телефон', help_text="Введите название")
     date_create = models.DateTimeField('Дата создания', auto_now=True)      # не нужно добавлять в форму
     date_update = models.DateTimeField('Дата обновления', auto_now_add=True)  # не нужно добавлять в форму
-    company = ForeignKey('Company', on_delete=models.CASCADE, related_name='companies')
+    company = ForeignKey('Company', on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ["-name"]
+        ordering = ["role"]
         verbose_name = "Контакт"
         verbose_name_plural = "Контакты"
 
@@ -49,10 +49,10 @@ class Comment(models.Model):
     text = models.TextField('Комментарий', max_length=50, help_text="Введите название")
     date_create = models.DateTimeField('Дата создания', auto_now=True)      # не нужно добавлять в форму
     date_update = models.DateTimeField('Дата обновления', auto_now_add=True)  # не нужно добавлять в форму
-    company = ForeignKey('Company', on_delete=models.CASCADE, related_name='comments')
+    company = ForeignKey('Company', on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ["-date_update"]
+        ordering = ["date_update"]
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
 

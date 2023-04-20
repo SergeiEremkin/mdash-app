@@ -3,8 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
 
-from manager_base.forms import CompanyForm, CommentForm
-from manager_base.models import Company, Comment
+from manager_base.forms import CompanyForm, CommentForm, ContactForm
+from manager_base.models import Company, Comment, Contact
 
 
 # Create your views here.
@@ -51,3 +51,15 @@ class CommentCreateView(CreateView):
         comp = Company.objects.get(id=self.kwargs['pk'])
         form.instance.company_id = comp.id
         return super(CommentCreateView, self).form_valid(form)
+
+
+class ContactCreateView(CreateView):
+    model = Contact
+    template_name = 'manager_base/create_contact.html'
+    success_url = reverse_lazy("home")
+    form_class = ContactForm
+
+    def form_valid(self, form):
+        comp = Company.objects.get(id=self.kwargs['pk'])
+        form.instance.company_id = comp.id
+        return super(ContactCreateView, self).form_valid(form)

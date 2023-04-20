@@ -26,5 +26,6 @@ urlpatterns = [
     path('company_details/<int:pk>/create_comment', views.CommentCreateView.as_view(), name='create-comment'),
     path('<int:pk>/delete_company', views.CompanyDeleteView.as_view(), name='company-delete'),
     path('<int:pk>/update_company', views.CompanyUpdateView.as_view(), name='company-update'),
+    path('<int:pk>/create_contact', views.ContactCreateView.as_view(), name='contact-create')
 
 ]

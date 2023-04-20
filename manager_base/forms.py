@@ -20,7 +20,16 @@ class ContactForm(forms.ModelForm):
 
         # Здесь перечислим поля модели, которые должны отображаться в веб-форме;
         # при необходимости можно вывести в веб-форму только часть полей из модели.
-        fields = ('name', 'role', 'email', 'phone', 'company')
+        fields = ['name', 'role', 'email', 'phone']
+
+    name = forms.CharField(label='ФИО', widget=forms.TextInput(
+        attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    role = forms.ChoiceField(choices=Contact.ROLES, label='Должность', widget=forms.Select(
+        attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    email = forms.EmailField(label='Эл.почта', widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+    phone = forms.IntegerField(label='Номер телефона', widget=forms.NumberInput(
+        attrs={'class': 'form-control', 'placeholder': 'x(xxx)xxxxxxx', 'style': 'width: 500px'}))
 
 
 class CommentForm(forms.ModelForm):
@@ -29,3 +38,6 @@ class CommentForm(forms.ModelForm):
         fields = ['text']
 
     text = forms.CharField(label='Комментарий', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
+
+
+
