@@ -25,7 +25,12 @@ urlpatterns = [
     path('company_details/<int:pk>', views.CompanyDetailsView.as_view(), name='details-company'),
     path('company_details/<int:pk>/create_comment', views.CommentCreateView.as_view(), name='create-comment'),
     path('<int:pk>/delete_company', views.CompanyDeleteView.as_view(), name='company-delete'),
+    path('<int:pk>/delete_comment', views.CommentDeleteView.as_view(), name='comment-delete'),
+    path('<int:pk>/delete_contact', views.ContactDeleteView.as_view(), name='contact-delete'),
     path('<int:pk>/update_company', views.CompanyUpdateView.as_view(), name='company-update'),
-    path('<int:pk>/create_contact', views.ContactCreateView.as_view(), name='contact-create')
+    path('<int:pk>/update_comment', views.CommentUpdateView.as_view(), name='comment-update'),
+    path('<int:pk>/update_contact', views.ContactUpdateView.as_view(), name='contact-update'),
+    path('<int:pk>/create_contact', views.ContactCreateView.as_view(), name='contact-create'),
+    path('search', views.SearchResultView.as_view(), name='result')
 
 ]

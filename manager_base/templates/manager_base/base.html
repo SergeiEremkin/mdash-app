@@ -27,13 +27,29 @@
 </head>
 <body>
 <div class="container-fluid">
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand mx-3" href="#">Mdash</a>
-    </nav>
-    <div class="row mt-5">
+    <div class="row">
+        <span class="border border-dark border-top-0">
+        <nav class="navbar navbar-light bg-light" style="max-width: 100%">
+            <a class="navbar-brand mx-5" href="#">
+                <div class="bg-info text-white">
+                    <p class="h3">Mdash</p>
+                </div>
+            </a>
+           <form class="form-inline my-2 my-lg-0" action="{% url 'result' %}">
+    <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+    <i class="bi bi-search"></i>
+  </span>
+            </div>
+        </nav>
+            </span>
+    </div>
+
+    <div class="row ">
         <div class="col-sm-3 bg-light" style="height: 100vh">
             <ul class="nav flex-column mt-3">
-                <li class="nav-item mt-2 mx-auto">
+                <li class="nav-item mt-5  mx-auto">
                     <a href="{% url 'create-company' %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Добавить
                         компанию</a>
                 </li>
@@ -52,8 +68,8 @@
                 </li>
             </ul>
         </div>
-        <div class="col mx-5">
-            <p class="h1 mb-4">{{ title }}</p>
+        <div class="col mt-3 mx-5">
+            <p class="h1 mb-5">{{ title }}</p>
             {% block content%}
             {% endblock content %}
         </div>

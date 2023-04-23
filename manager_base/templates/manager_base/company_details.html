@@ -25,10 +25,23 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><p class="fw-bold">Должность: </p>{{ contact.role }}</li>
-                     <li class="list-group-item"><p class="fw-bold">Телефон: </p>{{ contact.phone }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Телефон: </p>{{ contact.phone }}</li>
                     <li class="list-group-item"><p class="fw-bold">Эл.почта: </p>{{ contact.email }}</li>
-
                 </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" style="width: 50px" type="button"
+                        id="dropdownMenuButtonContact"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    ...
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'contact-update' contact.id%}"><i
+                            class="bi bi-pencil-square"> Редактировать</i></a>
+                    <a class="dropdown-item" href="{% url 'contact-delete' contact.id%}"><i
+                            class="bi bi-trash3"> Удалить</i></a>
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -44,6 +57,20 @@
                     <p class="card-text">
                         {{ comment }}
                     </p>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" style="width: 50px" type="button"
+                        id="dropdownMenuButtonComment"
+                        data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    ...
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'comment-update' comment.id%}"><i
+                            class="bi bi-pencil-square"> Редактировать</i></a>
+                    <a class="dropdown-item" href="{% url 'comment-delete' comment.id%}"><i
+                            class="bi bi-trash3"> Удалить</i></a>
                 </div>
             </div>
             {% endfor %}
