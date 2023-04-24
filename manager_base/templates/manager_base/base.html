@@ -35,44 +35,50 @@
                     <p class="h3">Mdash</p>
                 </div>
             </a>
-           <form class="form-inline my-2 my-lg-0" action="{% url 'result' %}">
-    <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search" name="search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <form action="{% url 'search_results' %}" method="get">
+              <div class="input-group">
+                  <input name="q" type="text" class="form-control" placeholder="Search..." aria-label=""
+                         aria-describedby="basic-addon1">
+                 <div class="input-group-append">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+
+                  </div>
+               </div>
 </form>
     <i class="bi bi-search"></i>
   </span>
-            </div>
-        </nav>
-            </span>
     </div>
+    </nav>
+    </span>
+</div>
 
-    <div class="row ">
-        <div class="col-sm-3 bg-light" style="height: 100vh">
-            <ul class="nav flex-column mt-3">
-                <li class="nav-item mt-5  mx-auto">
-                    <a href="{% url 'create-company' %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Добавить
-                        компанию</a>
-                </li>
-                <li class="nav-item mt-2 mx-auto">
-                    <a href="{% url 'home' %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Все
-                        компании</a>
-                </li>
-                <li class="nav-item mt-2 mx-auto">
-                    <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Дэшборд</a>
-                </li>
-                <li class="nav-item mt-2 mx-auto">
-                    <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Текущие задачи</a>
-                </li>
-                <li class="nav-item mt-2 mx-auto">
-                    <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Поддержка</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col mt-3 mx-5">
-            <p class="h1 mb-5">{{ title }}</p>
-            {% block content%}
-            {% endblock content %}
-        </div>
+<div class="row ">
+    <div class="col-sm-3 bg-light" style="height: 100vh">
+        <ul class="nav flex-column mt-3">
+            <li class="nav-item mt-5  mx-auto">
+                <a href="{% url 'create-company' %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Добавить
+                    компанию</a>
+            </li>
+            <li class="nav-item mt-2 mx-auto">
+                <a href="{% url 'home' %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Все
+                    компании</a>
+            </li>
+            <li class="nav-item mt-2 mx-auto">
+                <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Дэшборд</a>
+            </li>
+            <li class="nav-item mt-2 mx-auto">
+                <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Текущие задачи</a>
+            </li>
+            <li class="nav-item mt-2 mx-auto">
+                <a href="#" class="btn btn-outline-primary btn-lg" style="width: 300px">Поддержка</a>
+            </li>
+        </ul>
     </div>
+    <div class="col mt-3 mx-5">
+        <p class="h1 mb-5">{{ title }}</p>
+        {% block content%}
+        {% endblock content %}
+    </div>
+</div>
 </body>
 </html>

@@ -1,5 +1,4 @@
 from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
@@ -148,19 +147,16 @@ class ContactUpdateView(UpdateView):
                    'title': 'Редактирование контакта'}
         return render(request, 'manager_base/create_base.html', context)
 
+
 class SearchResultView(ListView):
     model = Company
     template_name = 'manager_base/search_result.html'
 
-    def get(self, request, *args, **kwargs):
-        search_company = request.GET.get('search')
-
-        if search_company:
-            companies = Company.objects.filter(Q(title__icontains=search_company) & Q(content__icontains=search_company))
-
-            return render(request, 'manager_base/search_result.html', context)
-
-        return render(request, 'manager_base/show_companies.html', context=Company.objects.all())
+    def get_queryset(self):  # new
+        query = self.request.GET.get("q")
+        object_list = Company.objects.filter(
+            Q(name__icontains=query) | Q(location__icontains=query)
+        )
+        return object_list
 
 
-    #companies = Company.objects.filter(name_icontains='')

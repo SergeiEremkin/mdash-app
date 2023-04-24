@@ -16,7 +16,7 @@
     </thead>
 
     <tbody>
-    {% for company in companies %}
+    {% for company in object_list %}
     <tr>
         <th scope="row">{{ company.id }}</th>
         <td><a href="{% url 'details-company' company.id%}"
