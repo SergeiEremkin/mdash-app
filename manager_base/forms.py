@@ -1,5 +1,4 @@
 from django import forms  # Импортируем модуль forms, из него возьмём класс ModelForm
-
 from .models import Company, Contact, Comment  # Импортируем модель, чтобы связать с ней форму
 
 
@@ -35,9 +34,10 @@ class ContactForm(forms.ModelForm):
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['text']
+        fields = ['text', 'need_call', 'date_next_call']
 
     text = forms.CharField(label='Комментарий', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
-
+    need_call = forms.BooleanField(label='Назначить дату следующего звонка', widget=forms.CheckboxInput(attrs={'class': 'checkboxInvoice', }))
+    date_next_call = forms.DateTimeField(disabled=False, widget=forms.SelectDateWidget)
 
 

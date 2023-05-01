@@ -1,0 +1,18 @@
+{% extends "manager_base/base.html" %}
+{% load static %}
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <div>
+        {{ form.text }}
+        {{ form.need_call }}
+        {{ form.date_next_call }}
+    </div>
+    <br>
+    <button id="inp" type="submit" value="Сохранить">Сохранить</button>
+    <script src="'script/jquery-3.6.4.min.js'"></script>
+    <script src="'script/main.js'"></script>
+</form>
+
+
+{% endblock %}

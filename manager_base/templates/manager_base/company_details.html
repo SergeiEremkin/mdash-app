@@ -19,17 +19,7 @@
             <a href="{% url 'contact-create' company.id %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Создать
                 контакт</a>
             {% for contact in company.contact_set.all %}
-            <div class="card mt-3">
-                <div class="card-header">
-                    <h3>{{contact.name}}</h3>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><p class="fw-bold">Должность: </p>{{ contact.role }}</li>
-                    <li class="list-group-item"><p class="fw-bold">Телефон: </p>{{ contact.phone }}</li>
-                    <li class="list-group-item"><p class="fw-bold">Эл.почта: </p>{{ contact.email }}</li>
-                </ul>
-            </div>
-            <div class="dropdown">
+             <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" style="width: 50px" type="button"
                         id="dropdownMenuButtonContact"
                         data-toggle="dropdown"
@@ -43,23 +33,23 @@
                             class="bi bi-trash3"> Удалить</i></a>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3>{{contact.name}}</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><p class="fw-bold">Должность: </p>{{ contact.role }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Телефон: </p>{{ contact.phone }}</li>
+                    <li class="list-group-item"><p class="fw-bold">Эл.почта: </p>{{ contact.email }}</li>
+                </ul>
+            </div>
             {% endfor %}
         </div>
-        <div class="col ">
+        <div class="col">
             <a href="{% url 'create-comment' company.id %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Создать
                 комментарий</a>
             {% for comment in company.comment_set.all %}
-            <div class="card mt-3">
-                <div class="card-header">
-                    <p class="text-primary">Дата создания: {{ comment.date_create }}</p>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        {{ comment }}
-                    </p>
-                </div>
-            </div>
-            <div class="dropdown">
+            <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" style="width: 50px" type="button"
                         id="dropdownMenuButtonComment"
                         data-toggle="dropdown"
@@ -71,6 +61,17 @@
                             class="bi bi-pencil-square"> Редактировать</i></a>
                     <a class="dropdown-item" href="{% url 'comment-delete' comment.id%}"><i
                             class="bi bi-trash3"> Удалить</i></a>
+                </div>
+             </div>
+            <div class="card">
+                <div class="card-header">
+                    <p class="text-primary">Дата создания: {{ comment.date_create }}
+                    </p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{ comment }}
+                    </p>
                 </div>
             </div>
             {% endfor %}

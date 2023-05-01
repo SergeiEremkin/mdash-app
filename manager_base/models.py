@@ -29,10 +29,10 @@ class Contact(models.Model):
              ('ЛВР', 'ЛВР'),
              ('Менеджер', 'Менеджер')]
     name = models.CharField('ФИО', max_length=50, help_text="Введите название")
-    role = models.CharField('Должность',max_length=50, choices=ROLES, default='Менеджер')
+    role = models.CharField('Должность', max_length=50, choices=ROLES, default='Менеджер')
     email = models.EmailField('Почта', max_length=50, help_text="Введите почту")
     phone = models.IntegerField('Телефон', help_text="Введите название")
-    date_create = models.DateTimeField('Дата создания', auto_now=True)      # не нужно добавлять в форму
+    date_create = models.DateTimeField('Дата создания', auto_now=True)  # не нужно добавлять в форму
     date_update = models.DateTimeField('Дата обновления', auto_now_add=True)  # не нужно добавлять в форму
     company = ForeignKey('Company', on_delete=models.CASCADE)
 
@@ -46,9 +46,12 @@ class Contact(models.Model):
 
 
 class Comment(models.Model):
+
     text = models.TextField('Комментарий', max_length=50, help_text="Введите название")
-    date_create = models.DateTimeField('Дата создания', auto_now=True)      # не нужно добавлять в форму
+    date_create = models.DateTimeField('Дата создания', auto_now=True)  # не нужно добавлять в форму
     date_update = models.DateTimeField('Дата обновления', auto_now_add=True)  # не нужно добавлять в форму
+    need_call = models.BooleanField('Поставить дату след звонка', default=True)
+    date_next_call = models.DateTimeField('Дата след. звонка', blank=True)
     company = ForeignKey('Company', on_delete=models.CASCADE)
 
     class Meta:
