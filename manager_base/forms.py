@@ -37,7 +37,7 @@ class CommentForm(forms.ModelForm):
         fields = ['text', 'need_call', 'date_next_call']
 
     text = forms.CharField(label='Комментарий', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
-    need_call = forms.BooleanField(label='Назначить дату следующего звонка', widget=forms.CheckboxInput(attrs={'class': 'checkboxInvoice', }))
-    date_next_call = forms.DateTimeField(disabled=False, widget=forms.SelectDateWidget)
+    need_call = forms.BooleanField(widget=forms.CheckboxInput())
+    date_next_call = forms.DateTimeField(disabled=True, widget=forms.SelectDateWidget())
 
 
