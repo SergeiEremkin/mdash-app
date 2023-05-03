@@ -97,8 +97,6 @@ class CommentCreateView(CreateView):
         return super(CommentCreateView, self).form_valid(form)
 
 
-
-
 class CommentDeleteView(DeleteView):
     model = Comment
     template_name = 'manager_base/delete_base.html'
@@ -137,6 +135,7 @@ class ContactDeleteView(DeleteView):
         context = {'contact': contact,
                    'title': 'Удаление контакта', 'name': contact.name}
         return render(request, 'manager_base/delete_base.html', context)
+
 
 class ContactUpdateView(UpdateView):
     model = Contact

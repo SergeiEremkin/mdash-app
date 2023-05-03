@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('#need_call').on('change', (function (e) {
+    $('#id_need_call').on('change', (function (e) {
     if($(this).prop('checked')){
-       $('#date_next_call').attr('disabled', null);
+       $('#id_date_next_call').attr('disabled', false);
     } else {
-        $('#date_next_call').attr('disabled', true);
+        $('#id_date_next_call').attr('disabled', true);
     }
     }));
 });
