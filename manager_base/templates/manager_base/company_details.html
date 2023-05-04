@@ -19,7 +19,7 @@
             <a href="{% url 'contact-create' company.id %}" class="btn btn-outline-primary btn-lg" style="width: 300px">Создать
                 контакт</a>
             {% for contact in company.contact_set.all %}
-             <div class="dropdown mt-3">
+            <div class="dropdown mt-3">
                 <button class="btn btn-secondary dropdown-toggle" style="width: 50px" type="button"
                         id="dropdownMenuButtonContact"
                         data-toggle="dropdown"
@@ -62,17 +62,22 @@
                     <a class="dropdown-item" href="{% url 'comment-delete' comment.id%}"><i
                             class="bi bi-trash3"> Удалить</i></a>
                 </div>
-             </div>
+            </div>
             <div class="card">
                 <div class="card-header">
-                    <p class="text-primary">Дата создания: {{ comment.date_create }}
+                    <p class="text-primary">Дата создания: {{ comment.date_create|date:'Y-m-d H:i' }}
                     </p>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        <p>{{ comment.text }}</p>
-                        <p>{{ comment.need_call }}</p>
-                        <p>{{ comment.date_next_call }}</p>
+                    <p>{{ comment.text }}</p>
+
+                </div>
+                <div class="card-footer">
+                    {% if comment.date_next_call and comment.need_call == True %}
+                    <p class="bg-primary text-white">Дата следующего звонка: {{ comment.date_next_call|date:'Y-m-d H:i' }}</p>
+
+                                       {% endif %}
                     </p>
                 </div>
             </div>

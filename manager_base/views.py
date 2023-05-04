@@ -162,3 +162,11 @@ class SearchResultView(ListView):
         return object_list
 
 
+class TaskListView(ListView):
+    template_name = 'manager_base/show_tasks.html'
+
+    def get(self,  request, *args, **kwargs):
+        comments = Comment.objects.filter(need_call=True).order_by('date_next_call')
+        title = 'Список задач'
+        context = {'comments': comments, 'title': title}
+        return render(request, 'manager_base/show_tasks.html', context)

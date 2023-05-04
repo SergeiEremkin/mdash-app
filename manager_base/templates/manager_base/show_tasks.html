@@ -1,0 +1,35 @@
+{% extends "manager_base/base.html" %}
+{% block title %}{{ title }} {% endblock title %}
+{% block header %} {{ title }} {% endblock header %}
+{% block content %}
+
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th>#</th>
+        <th>Дата звонка</th>
+        <th>Комментарий</th>
+        <th>ФИО контакта</th>
+        <th>Email</th>
+        <th>Телефон</th>
+        <th>Компания</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for comment in comments %}
+    <tr>
+        <th scope="row">{{ comment.id }}</th>
+        <td>{{ comment.date_next_call|date:'Y-m-d H:i' }}</td>
+        <td>{{ comment.text }}</td>
+        <td>{{ comment.company.contact_set.name }}</td>
+        <td>{{ comment.company.contact_set.email }}</td>
+        <td>{{ comment.company.contact_set.phone }}</td>
+        <td>{{ comment.company.name }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% endblock %}
