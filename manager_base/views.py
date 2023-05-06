@@ -82,14 +82,13 @@ class CommentUpdateView(UpdateView):
 
 class CommentCreateView(CreateView):
     model = Comment
-    template_name = 'manager_base/create_comment.html'
+    template_name = 'manager_base/create_base.html'
     success_url = reverse_lazy("home")
     form_class = CommentForm
 
-
     def get(self, request, *args, **kwargs):
         context = {'form': CommentForm(), 'title': 'Создание комментария'}
-        return render(request, 'manager_base/create_comment.html', context)
+        return render(request, 'manager_base/create_base.html', context)
 
     def form_valid(self, form):
         comp = Company.objects.get(id=self.kwargs['pk'])

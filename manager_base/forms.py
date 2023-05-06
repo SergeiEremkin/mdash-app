@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django import forms  # Импортируем модуль forms, из него возьмём класс ModelForm
 from .models import Company, Contact, Comment  # Импортируем модель, чтобы связать с ней форму
 
@@ -38,6 +40,7 @@ class CommentForm(forms.ModelForm):
 
     text = forms.CharField(label='Комментарий', widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Введите текст', 'style': 'width: 500px'}))
     need_call = forms.BooleanField(required=False, widget=forms.CheckboxInput())
-    date_next_call = forms.DateTimeField(required=False, widget=forms.DateTimeInput())
+    date_next_call = forms.DateTimeField(required=False,
+                                         widget=forms.DateInput(attrs={'type': 'datetime-local'}))
 
 

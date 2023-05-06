@@ -1,7 +1,10 @@
 {% extends "manager_base/base.html" %}
 
-{% block content %}
 
+{% load static %}
+{% block content %}
+<script src="{% static 'js/jquery-3.6.4.min.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
 <form method="post">{% csrf_token %}
     <div>
         {{ form.as_p }}
