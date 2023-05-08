@@ -1,10 +1,18 @@
-from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
+import base64
+import io
+import urllib.parse
+
+from django.db.models import Q, Count
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, DeleteView, UpdateView
-
 from manager_base.forms import CompanyForm, CommentForm, ContactForm
 from manager_base.models import Company, Comment, Contact
+import matplotlib.pyplot as plt
+import io
+import urllib, base64
+
+
 
 
 # Create your views here.
@@ -169,3 +177,14 @@ class TaskListView(ListView):
         title = 'Список задач'
         context = {'comments': comments, 'title': title}
         return render(request, 'manager_base/show_tasks.html', context)
+
+def get_plot(request):
+    plt.plot(range(10))
+    fig = plt.gcf()
+    buf = io.BytesIO()
+    fig.savefig(buf, format='png')
+    buf.seek(0)
+    s = base64.b64encode(buf.read())
+    uri = urllib.parse.quote(s)
+
+    return render(request, 'manager_base/diagramms.html', {'data': uri})

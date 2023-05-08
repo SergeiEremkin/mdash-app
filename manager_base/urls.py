@@ -32,6 +32,7 @@ urlpatterns = [
     path('<int:pk>/update_contact', views.ContactUpdateView.as_view(), name='contact-update'),
     path('<int:pk>/create_contact', views.ContactCreateView.as_view(), name='contact-create'),
     path('search', views.SearchResultView.as_view(), name='search_results'),
-    path('tasks', views.TaskListView.as_view(), name='tasks')
+    path('tasks', views.TaskListView.as_view(), name='tasks'),
+    path('diagramms', views.get_plot, name='diagramms')
 
 ]
