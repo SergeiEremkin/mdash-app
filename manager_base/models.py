@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import ForeignKey
+from django.forms import ImageField
 from django.urls import reverse
 
 
@@ -60,3 +61,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+

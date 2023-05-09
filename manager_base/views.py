@@ -178,13 +178,16 @@ class TaskListView(ListView):
         context = {'comments': comments, 'title': title}
         return render(request, 'manager_base/show_tasks.html', context)
 
-def get_plot(request):
-    plt.plot(range(10))
-    fig = plt.gcf()
-    buf = io.BytesIO()
-    fig.savefig(buf, format='png')
-    buf.seek(0)
-    s = base64.b64encode(buf.read())
-    uri = urllib.parse.quote(s)
+def get_plot():
 
-    return render(request, 'manager_base/diagramms.html', {'data': uri})
+    dataframe = plt.data.wind()
+    fig = plt.scatter(dataframe, x='Кол-во задач', y= 'Название комании', width=400, height=400)
+    fig.savefig('manager_base/static/images/plt1.png')
+
+
+def show_diagramms(request):
+    return render(request, 'manager_base/diagramms.html')
+
+
+
+
