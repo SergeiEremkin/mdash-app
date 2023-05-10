@@ -9,10 +9,8 @@ from django.views.generic import CreateView, ListView, DetailView, DeleteView, U
 from manager_base.forms import CompanyForm, CommentForm, ContactForm
 from manager_base.models import Company, Comment, Contact
 import matplotlib.pyplot as plt
-import io
-import urllib, base64
-
-
+import matplotlib
+import numpy as np
 
 
 # Create your views here.
@@ -172,22 +170,34 @@ class SearchResultView(ListView):
 class TaskListView(ListView):
     template_name = 'manager_base/show_tasks.html'
 
-    def get(self,  request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         comments = Comment.objects.filter(need_call=True).order_by('date_next_call')
         title = 'Список задач'
         context = {'comments': comments, 'title': title}
         return render(request, 'manager_base/show_tasks.html', context)
 
-def get_plot():
-
-    dataframe = plt.data.wind()
-    fig = plt.scatter(dataframe, x='Кол-во задач', y= 'Название комании', width=400, height=400)
-    fig.savefig('manager_base/static/images/plt1.png')
-
 
 def show_diagramms(request):
+    matplotlib.use('Agg')
+    comments = Comment.objects.filter(need_call=True)
+    x = []
+
+    for i in range(len(comments)):
+        x.append(comments[i].company.name)
+
+
+
+    plt.hist(x=x, bins=len(x), orientation='horizontal')
+    plt.title('Открытые контакты', pad=20)
+    plt.xlabel('Кол-во открытых контактов', labelpad=10)
+    plt.ylabel('Компания', labelpad=10)
+    # saving the figure.
+    plt.gcf().set_size_inches(14, 5)
+    plt.savefig("manager_base/static/images/plt1.png", dpi=90,
+                pad_inches=1,
+                transparent=True,
+                facecolor="w",
+                edgecolor='g',
+                ),
+
     return render(request, 'manager_base/diagramms.html')
-
-
-
-
