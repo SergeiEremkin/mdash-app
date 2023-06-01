@@ -33,6 +33,6 @@ urlpatterns = [
     path('<int:pk>/create_contact', views.ContactCreateView.as_view(), name='contact-create'),
     path('search', views.SearchResultView.as_view(), name='search_results'),
     path('tasks', views.TaskListView.as_view(), name='tasks'),
-    path('diagramms', views.show_diagramms, name='diagramms')
+    path('diagramms', views.show_diagramms, name='diagramms'),
 
 ]

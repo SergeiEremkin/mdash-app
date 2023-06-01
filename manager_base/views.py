@@ -185,8 +185,6 @@ def show_diagramms(request):
     for i in range(len(comments)):
         x.append(comments[i].company.name)
 
-
-
     plt.hist(x=x, bins=len(x), orientation='horizontal')
     plt.title('Открытые контакты', pad=20)
     plt.xlabel('Кол-во открытых контактов', labelpad=10)
